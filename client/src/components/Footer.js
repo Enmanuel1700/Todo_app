@@ -8,7 +8,7 @@ const Footer = () => (
             fontSize: '0.9rem',
         }}
     >
-        © 2024 To-Do App. Built with ❤️ by [Your Name].
+        © 2024 To-Do App. Built with ❤️ by Enmanuel Santana.
     </footer>
 );
 
