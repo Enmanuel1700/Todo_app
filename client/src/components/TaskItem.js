@@ -3,7 +3,16 @@ import { format } from 'date-fns';
 
 const TaskItem = ({ task, onTaskUpdated, onTaskDeleted }) => {
     // Format the due date to a readable format
-    const formattedDate = task.due_date ? format(new Date(task.due_date), 'MMM dd, yyyy') : 'No Due Date';
+    const formattedDate = task.due_date
+        ? format(new Date(task.due_date), 'MMM dd, yyyy')
+        : 'No Due Date';
+
+    // Handle delete with confirmation
+    const handleDelete = () => {
+        if (window.confirm('Are you sure you want to delete this task?')) {
+            onTaskDeleted(task.id);
+        }
+    };
 
     return (
         <li>
@@ -18,9 +27,10 @@ const TaskItem = ({ task, onTaskUpdated, onTaskDeleted }) => {
             >
                 {task.completed ? 'Undo' : 'Complete'}
             </button>
-            <button className="delete-btn" onClick={() => onTaskDeleted(task.id)}>Delete</button>
+            <button className="delete-btn" onClick={handleDelete}>Delete</button>
         </li>
     );
 };
 
 export default TaskItem;
+
