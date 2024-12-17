@@ -1,3 +1,4 @@
+// Import necessary modules
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -10,7 +11,7 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Routes
+// Route to get all tasks
 app.get('/api/tasks', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM tasks ORDER BY id');
